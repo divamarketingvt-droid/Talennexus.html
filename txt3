@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexHR | Expert Consulting & Smart Technology</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-teal: #0D9488;
+            --dark-teal: #115E59;
+            --light-teal: #99F6E4;
+            --accent-navy: #0F172A;
+            --surface-bg: #F8FAFC;
+            --text-main: #334155;
+            --text-light: #64748B;
+            --white: #FFFFFF;
+            --gradient-teal: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Utilities --- */
+        .text-gradient {
+            background: var(--gradient-teal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .bg-surface { background-color: var(--surface-bg); }
+        
+        .section-padding { padding: 100px 0; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+        }
+
+        /* --- Buttons --- */
+        .btn-primary-action {
+            background: var(--primary-teal);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary-action:hover {
+            background: var(--dark-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13, 148, 136, 0.3);
+        }
+
+        .btn-outline-action {
+            background: transparent;
+            color: var(--primary-teal);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 2px solid var(--primary-teal);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-action:hover {
+            background: var(--primary-teal);
+            color: var(--white);
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand {
+            font-family: 'Plus Jakarta Sans';
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--accent-navy);
+            letter-spacing: -0.03em;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-main);
+            margin: 0 12px;
+            font-size: 0.95rem;
+        }
+
+        .nav-link.active { color: var(--primary-teal); }
+
+        /* --- Section 1: Hero --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(153, 246, 228, 0.4) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            top: -100px;
+            right: -100px;
+        }
+
+        /* --- Section 2: Challenges (Problem Cards) --- */
+        .challenge-card {
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            border-color: #F87171; /* Subtle Red on hover indicating pain */
+            transform: translateX(10px);
+        }
+        
+        .challenge-icon {
+            color: #EF4444;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Section 3: Consulting Services --- */
+        .service-card-consulting {
+            background: var(--surface-bg);
+            border-left: 4px solid var(--primary-teal);
+            padding: 2rem;
+            height: 100%;
+            border-radius: 0 12px 12px 0;
+            transition: all 0.3s ease;
+        }
+
+        .service-card-consulting:hover {
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        /* --- Section 4: Timeline --- */
+        .timeline-wrapper {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #E2E8F0;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-progress {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            background: var(--primary-teal);
+            transform: translateX(-50%);
+            height: 0%; /* GSAP controls this */
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            opacity: 0.3; /* Dimmed initially */
+            transition: opacity 0.5s;
+        }
+        
+        .timeline-item.active { opacity: 1; }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            border: 4px solid var(--text-light);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-item.active .timeline-dot {
+            border-color: var(--primary-teal);
+            background: var(--primary-teal);
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
+        }
+
+        /* --- Section 5: Platform Pinned --- */
+        .dashboard-visual {
+            position: sticky;
+            top: 10vh;
+            height: 80vh;
+            background: var(--accent-navy);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0; /* Animated in */
+            transform: scale(0.8);
+        }
+        
+        .feature-badge i { color: var(--primary-teal); }
+
+        /* --- Section 6: Split Layout Merge --- */
+        .split-section-container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .split-panel {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            transition: all 0.5s ease;
+        }
+        
+        .split-left { background: #F1F5F9; border-right: 1px solid #E2E8F0; }
+        .split-right { background: var(--white); }
+
+        .merge-icon-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: var(--primary-teal);
+            z-index: 10;
+            opacity: 0;
+        }
+
+        /* --- Section 8: Metrics --- */
+        .metric-card {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .metric-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-teal);
+            line-height: 1;
+        }
+
+        /* --- Section 10: Team --- */
+        .team-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .team-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .team-card:hover .team-img { transform: scale(1.05); }
+        
+        .team-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card:hover .team-overlay { transform: translateY(0); }
+
+        /* --- Section 11: Testimonials --- */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: scroll-text 40s linear infinite;
+        }
+        
+        .testimonial-bubble {
+            display: inline-block;
+            background: var(--surface-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 0 20px;
+            width: 400px;
+            vertical-align: top;
+            white-space: normal;
+        }
+
+        @keyframes scroll-text {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: var(--accent-navy);
+            color: #94A3B8;
+            padding: 80px 0 30px;
+        }
+        
+        .footer h5 { color: var(--white); margin-bottom: 1.5rem; }
+        
+        .footer-link {
+            display: block;
+            color: #94A3B8;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover { color: var(--light-teal); }
+
+        /* --- Responsive --- */
+        @media (max-width: 991px) {
+            .split-section-container { flex-direction: column; height: auto; }
+            .split-panel { padding: 3rem 1rem; height: auto; }
+            .timeline-line { left: 20px; }
+            .timeline-progress { left: 20px; }
+            .timeline-dot { left: 20px; }
+            .timeline-content { margin-left: 50px !important; text-align: left !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nex<span class="text-gradient">HR</span>.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#consulting">Consulting Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#platform">HR Platform</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#industries">Industries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#contact" class="btn btn-primary-action btn-sm">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section id="hero" class="hero-section">
+        <div class="hero-blob"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-text-content">
+                        <span class="badge bg-light text-dark border mb-3 px-3 py-2 rounded-pill">Strategy + Software</span>
+                        <h1 class="display-3 mb-4 lh-sm">Transform Your Workforce With <span class="text-gradient">HR Expertise</span> & <span class="text-gradient">Smart Technology</span></h1>
+                        <p class="lead text-secondary mb-5">Helping businesses streamline recruitment, compliance, payroll, employee engagement, and workforce management through consulting services and innovative HR software.</p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="#contact" class="btn btn-primary-action">Book Consultation</a>
+                            <a href="#platform" class="btn btn-outline-action">Request Platform Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="position-relative">
+                        <!-- Abstract Composition of Human (Consulting) + Screen (Tech) -->
+                        <img src="https://picsum.photos/seed/corporate3/600/500" class="img-fluid rounded-4 shadow-lg hero-img" alt="HR Strategy">
+                        <div class="glass-panel position-absolute bottom-0 end-0 p-3 m-4 d-flex align-items-center gap-3 w-75 hero-card-anim">
+                            <div class="bg-success bg-opacity-10 p-2 rounded-circle text-success"><i class="fas fa-check-circle fa-2x"></i></div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">System Status</h6>
+                                <small class="text-muted">Optimized by NexHR</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: The HR Challenges -->
+    <section class="section-padding bg-surface">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h4 class="text-danger fw-bold text-uppercase small ls-2 mb-2">The Problem</h4>
+                    <h2 class="display-5">The HR Landscape is Complex</h2>
+                    <p class="text-muted">Most businesses struggle to balance human connection with operational efficiency.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="challenge-card gs-reveal">
+                        <i class="fas fa-hourglass-half challenge-icon"></i>
+                        <h5>Hiring Delays</h5>
+                        <p class="text-muted small">Slow processes cause you to lose top talent to faster competitors.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="challenge-card gs-reveal">
+                        <i class="fas fa-exclamation-triangle challenge-icon"></i>
+                        <h5>Compliance Risks</h5>
+                        <p class="text-muted small">Ever-changing labor laws put your business at legal and financial risk.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="challenge-card gs-reveal">
+                        <i class="fas fa-file-invoice-dollar challenge-icon"></i>
+                        <h5>Payroll Complexity</h5>
+                        <p class="text-muted small">Manual calculations lead to errors, dissatisfied employees, and tax headaches.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="challenge-card gs-reveal">
+                        <i class="fas fa-user-slash challenge-icon"></i>
+                        <h5>Employee Retention</h5>
+                        <p class="text-muted small">Without engagement strategies, turnover costs drain your budget.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="challenge-card gs-reveal">
+                        <i class="fas fa-chart-line challenge-icon"></i>
+                        <h5>Performance Tracking</h5>
+                        <p class="text-muted small">Lack of data makes it impossible to make informed personnel decisions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="challenge-card gs-reveal">
+                        <i class="fas fa-eye-slash challenge-icon"></i>
+                        <h5>Workforce Visibility</h5>
+                        <p class="text-muted small">Disjointed systems mean you never have a clear picture of your organization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: HR Consulting Services -->
+    <section id="consulting" class="section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <h4 class="text-primary fw-bold text-uppercase small ls-2 mb-2">Our Expertise</h4>
+                    <h2 class="display-5">Strategic HR Consulting For Sustainable Growth</h2>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-users-cog fa-2x"></i></div>
+                        <h5>Recruitment Consulting</h5>
+                        <p class="text-muted">Build talent acquisition strategies that attract and retain high performers.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-chess fa-2x"></i></div>
+                        <h5>Workforce Planning</h5>
+                        <p class="text-muted">Align your human capital strategy with long-term business objectives.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-clipboard-check fa-2x"></i></div>
+                        <h5>HR Audits</h5>
+                        <p class="text-muted">Comprehensive reviews to identify gaps and ensure regulatory compliance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-shield-alt fa-2x"></i></div>
+                        <h5>Compliance Advisory</h5>
+                        <p class="text-muted">Navigate local and international labor laws with confidence.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-heart fa-2x"></i></div>
+                        <h5>Employee Engagement</h5>
+                        <p class="text-muted">Create cultures that foster loyalty, productivity, and innovation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-chart-pie fa-2x"></i></div>
+                        <h5>Performance Management</h5>
+                        <p class="text-muted">Implement frameworks that align individual goals with company success.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-sitemap fa-2x"></i></div>
+                        <h5>Organizational Development</h5>
+                        <p class="text-muted">Structure your teams for maximum efficiency and agility.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card-consulting">
+                        <div class="mb-3 text-primary"><i class="fas fa-user-tie fa-2x"></i></div>
+                        <h5>Leadership Development</h5>
+                        <p class="text-muted">Coach managers to become inspiring leaders for your workforce.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Consulting Process (Interactive Timeline) -->
+    <section class="section-padding bg-surface" id="process">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5">Our Proven Process</h2>
+            </div>
+            
+            <div class="timeline-wrapper">
+                <div class="timeline-line"></div>
+                <div class="timeline-progress"></div>
+                
+                <!-- Step 1 -->
+                <div class="row timeline-item align-items-center">
+                    <div class="col-lg-5 text-end timeline-content">
+                        <h4 class="fw-bold">Discover</h4>
+                        <p class="text-muted">We dive deep into your business model, culture, and specific HR pain points.</p>
+                    </div>
+                    <div class="col-lg-2 text-center"><div class="timeline-dot"></div></div>
+                    <div class="col-lg-5 timeline-content">
+                        <i class="fas fa-search fa-3x text-primary opacity-25"></i>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="row timeline-item align-items-center">
+                    <div class="col-lg-5 order-lg-2 timeline-content">
+                        <h4 class="fw-bold">Assess</h4>
+                        <p class="text-muted">Comprehensive audits of current policies, payroll systems, and compliance status.</p>
+                    </div>
+                    <div class="col-lg-2 order-lg-1 text-center"><div class="timeline-dot"></div></div>
+                    <div class="col-lg-5 order-lg-0 timeline-content">
+                        <i class="fas fa-clipboard-list fa-3x text-primary opacity-25"></i>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="row timeline-item align-items-center">
+                    <div class="col-lg-5 text-end timeline-content">
+                        <h4 class="fw-bold">Strategize</h4>
+                        <p class="text-muted">Develop a customized roadmap combining consulting interventions and software implementation.</p>
+                    </div>
+                    <div class="col-lg-2 text-center"><div class="timeline-dot"></div></div>
+                    <div class="col-lg-5 timeline-content">
+                        <i class="fas fa-chess-knight fa-3x text-primary opacity-25"></i>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="row timeline-item align-items-center">
+                    <div class="col-lg-5 order-lg-2 timeline-content">
+                        <h4 class="fw-bold">Implement</h4>
+                        <p class="text-muted">Roll out new policies, train teams, and configure the HR SaaS platform.</p>
+                    </div>
+                    <div class="col-lg-2 order-lg-1 text-center"><div class="timeline-dot"></div></div>
+                    <div class="col-lg-5 order-lg-0 timeline-content">
+                        <i class="fas fa-laptop-code fa-3x text-primary opacity-25"></i>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="row timeline-item align-items-center">
+                    <div class="col-lg-5 text-end timeline-content">
+                        <h4 class="fw-bold">Optimize</h4>
+                        <p class="text-muted">Continuous monitoring, analytics review, and strategy refinement.</p>
+                    </div>
+                    <div class="col-lg-2 text-center"><div class="timeline-dot"></div></div>
+                    <div class="col-lg-5 timeline-content">
+                        <i class="fas fa-rocket fa-3x text-primary opacity-25"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: HR Technology Platform -->
+    <section id="platform" class="section-padding" style="background: #0F172A; color: white;">
+        <div class="container-fluid px-lg-5">
+            <div class="row mb-4">
+                <div class="col-lg-8">
+                    <h4 class="text-teal fw-bold text-uppercase small ls-2 mb-2">The Engine</h4>
+                    <h2 class="display-4">Technology That Simplifies HR Operations</h2>
+                    <p class="text-white-50">While we guide your strategy, our platform automates the grind.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 order-lg-2">
+                    <!-- Features List (Triggering animations) -->
+                    <div class="mb-5 feature-trigger" data-target="feat-1">
+                        <h5 class="fw-bold"><i class="fas fa-users text-teal me-2"></i>Employee Management</h5>
+                        <p class="text-white-50 small">Centralized database for all employee data, documents, and history.</p>
+                    </div>
+                    <div class="mb-5 feature-trigger" data-target="feat-2">
+                        <h5 class="fw-bold"><i class="fas fa-clock text-teal me-2"></i>Attendance & Leave</h5>
+                        <p class="text-white-50 small">Track time, approve leave requests, and manage shifts effortlessly.</p>
+                    </div>
+                    <div class="mb-5 feature-trigger" data-target="feat-3">
+                        <h5 class="fw-bold"><i class="fas fa-money-bill-wave text-teal me-2"></i>Payroll Automation</h5>
+                        <p class="text-white-50 small">Automated tax calculations, direct deposits, and compliance reporting.</p>
+                    </div>
+                    <div class="mb-5 feature-trigger" data-target="feat-4">
+                        <h5 class="fw-bold"><i class="fas fa-bullhorn text-teal me-2"></i>Recruitment Tracking</h5>
+                        <p class="text-white-50 small">From job posting to onboarding, manage candidates in one pipeline.</p>
+                    </div>
+                    <div class="mb-5 feature-trigger" data-target="feat-5">
+                        <h5 class="fw-bold"><i class="fas fa-star text-teal me-2"></i>Performance Reviews</h5>
+                        <p class="text-white-50 small">360-degree feedback loops and goal setting tools.</p>
+                    </div>
+                    <div class="mb-5 feature-trigger" data-target="feat-6">
+                        <h5 class="fw-bold"><i class="fas fa-chart-bar text-teal me-2"></i>Analytics & Reports</h5>
+                        <p class="text-white-50 small">Real-time dashboards for turnover, cost, and engagement metrics.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 order-lg-1">
+                    <!-- Pinned Dashboard Visual -->
+                    <div class="dashboard-visual">
+                        <img src="https://picsum.photos/seed/dashboard2/900/600" class="w-100 h-100 object-fit-cover opacity-75" alt="Dashboard UI">
+                        
+                        <!-- Floating Badges (Animated via GSAP) -->
+                        <div id="feat-1" class="feature-badge" style="top: 20%; left: 20%;">
+                            <i class="fas fa-users"></i> All Employees
+                        </div>
+                        <div id="feat-2" class="feature-badge" style="top: 20%; right: 20%;">
+                            <i class="fas fa-clock"></i> Time Tracker
+                        </div>
+                        <div id="feat-3" class="feature-badge" style="bottom: 30%; left: 10%;">
+                            <i class="fas fa-money-bill-wave"></i> Payroll Run
+                        </div>
+                        <div id="feat-4" class="feature-badge" style="bottom: 20%; right: 25%;">
+                            <i class="fas fa-bullhorn"></i> New Hires
+                        </div>
+                        <div id="feat-5" class="feature-badge" style="top: 50%; left: 40%;">
+                            <i class="fas fa-star"></i> KPIs Met
+                        </div>
+                        <div id="feat-6" class="feature-badge" style="top: 10%; left: 50%;">
+                            <i class="fas fa-chart-bar"></i> Analytics
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Split Layout Merge -->
+    <section id="merge" class="split-section-container">
+        <div class="split-panel split-left">
+            <h3 class="display-6 mb-4"><i class="fas fa-user-tie text-primary me-2"></i>HR Consultants</h3>
+            <p class="lead mb-4 text-secondary">Expert guidance on strategy, culture, and complex people problems.</p>
+            <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Strategic Advice</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Change Management</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Compliance Audits</li>
+            </ul>
+        </div>
+        <div class="split-panel split-right">
+            <h3 class="display-6 mb-4"><i class="fas fa-laptop-code text-primary me-2"></i>HR Software</h3>
+            <p class="lead mb-4 text-secondary">The operational engine that automates daily HR tasks.</p>
+            <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Data Automation</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Self-Service Portal</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Real-time Reporting</li>
+            </ul>
+        </div>
+        <div class="merge-icon-center">
+            <i class="fas fa-plus-circle"></i>
+        </div>
+        <div class="position-absolute bottom-0 start-50 translate-middle-x w-100 text-center pb-5 merge-result-text" style="opacity: 0;">
+            <h2 class="fw-bold display-4 text-primary">Business Results</h2>
+        </div>
+    </section>
+
+    <!-- Section 7: Industries -->
+    <section id="industries" class="section-padding bg-surface">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5">Industries We Serve</h2>
+                <p class="text-muted">Tailored solutions for every sector.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Interactive Cards -->
+                <div class="col-md-4 industry-card-trigger">
+                    <div class="card border-0 shadow-sm h-100 p-4 text-center hover-lift">
+                        <div class="mb-3 text-primary"><i class="fas fa-heartbeat fa-3x"></i></div>
+                        <h5>Healthcare</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 industry-card-trigger">
+                    <div class="card border-0 shadow-sm h-100 p-4 text-center hover-lift">
+                        <div class="mb-3 text-primary"><i class="fas fa-industry fa-3x"></i></div>
+                        <h5>Manufacturing</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 industry-card-trigger">
+                    <div class="card border-0 shadow-sm h-100 p-4 text-center hover-lift">
+                        <div class="mb-3 text-primary"><i class="fas fa-shopping-cart fa-3x"></i></div>
+                        <h5>Retail</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 industry-card-trigger">
+                    <div class="card border-0 shadow-sm h-100 p-4 text-center hover-lift">
+                        <div class="mb-3 text-primary"><i class="fas fa-truck fa-3x"></i></div>
+                        <h5>Logistics</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 industry-card-trigger">
+                    <div class="card border-0 shadow-sm h-100 p-4 text-center hover-lift">
+                        <div class="mb-3 text-primary"><i class="fas fa-graduation-cap fa-3x"></i></div>
+                        <h5>Education</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 industry-card-trigger">
+                    <div class="card border-0 shadow-sm h-100 p-4 text-center hover-lift">
+                        <div class="mb-3 text-primary"><i class="fas fa-concierge-bell fa-3x"></i></div>
+                        <h5>Hospitality</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 industry-card-trigger">
+                    <div class="card border-0 shadow-sm h-100 p-4 text-center hover-lift">
+                        <div class="mb-3 text-primary"><i class="fas fa-code fa-3x"></i></div>
+                        <h5>IT Services</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Success Metrics -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="metric-number counter" data-target="500">0</div>
+                    <h6 class="text-white-50 mt-2">Clients Served</h6>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="metric-number counter" data-target="50000">0</div>
+                    <h6 class="text-white-50 mt-2">Employees Managed</h6>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="metric-number counter" data-target="95">0</div>
+                    <h6 class="text-white-50 mt-2">% Client Retention</h6>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="metric-number counter" data-target="15">0</div>
+                    <h6 class="text-white-50 mt-2">Years Experience</h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Client Success Stories -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5">Client Success Stories</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 p-4 case-study-card">
+                        <span class="badge bg-light text-dark mb-3">Manufacturing</span>
+                        <h5 class="fw-bold mb-3">Reducing Turnover by 40%</h5>
+                        <p class="text-muted small mb-4"><strong>Challenge:</strong> High attrition in factory roles.</p>
+                        <p class="text-muted small mb-4"><strong>Solution:</strong> Implemented NexHR engagement strategy + automated attendance.</p>
+                        <p class="text-primary fw-bold small"><strong>Outcome:</strong> Saved $200k annually in hiring costs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 p-4 case-study-card">
+                        <span class="badge bg-light text-dark mb-3">Healthcare</span>
+                        <h5 class="fw-bold mb-3">Payroll Compliance</h5>
+                        <p class="text-muted small mb-4"><strong>Challenge:</strong> Manual errors in nurse shift pay.</p>
+                        <p class="text-muted small mb-4"><strong>Solution:</strong> Automated payroll engine with consulting audit.</p>
+                        <p class="text-primary fw-bold small"><strong>Outcome:</strong> 100% Audit compliance.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 p-4 case-study-card">
+                        <span class="badge bg-light text-dark mb-3">Retail</span>
+                        <h5 class="fw-bold mb-3">Scaling Workforce 2x</h5>
+                        <p class="text-muted small mb-4"><strong>Challenge:</strong> Opening 10 new stores without HR team expansion.</p>
+                        <p class="text-muted small mb-4"><strong>Solution:</strong> NexHR SaaS platform adoption.</p>
+                        <p class="text-primary fw-bold small"><strong>Outcome:</strong> Managed 500 new hires seamlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: Team Expertise -->
+    <section id="about" class="section-padding bg-surface">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5">Our Experts</h2>
+                <p class="text-muted">Consultants and Technologists working in unison.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-6 team-wrapper">
+                    <div class="team-card h-100">
+                        <img src="https://picsum.photos/seed/consult1/300/400" class="team-img" alt="Consultant">
+                        <div class="team-overlay">
+                            <h5>James Carter</h5>
+                            <p class="small">HR Consultant</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 team-wrapper">
+                    <div class="team-card h-100">
+                        <img src="https://picsum.photos/seed/tech1/300/400" class="team-img" alt="Tech">
+                        <div class="team-overlay">
+                            <h5>Sarah Lin</h5>
+                            <p class="small">Product Lead</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 team-wrapper">
+                    <div class="team-card h-100">
+                        <img src="https://picsum.photos/seed/payroll1/300/400" class="team-img" alt="Payroll">
+                        <div class="team-overlay">
+                            <h5>Michael Ross</h5>
+                            <p class="small">Payroll Expert</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 team-wrapper">
+                    <div class="team-card h-100">
+                        <img src="https://picsum.photos/seed/law1/300/400" class="team-img" alt="Compliance">
+                        <div class="team-overlay">
+                            <h5>Elena Vo</h5>
+                            <p class="small">Compliance Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 11: Testimonials -->
+    <section class="py-5 overflow-hidden bg-white">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Set 1 -->
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"The combination of expert advice and great software is unbeatable."</p>
+                    <div class="mt-3 fw-bold">- CEO, TechFlow</div>
+                </div>
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"We finally have visibility into our workforce costs."</p>
+                    <div class="mt-3 fw-bold">- CFO, LogiTrans</div>
+                </div>
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"NexHR transformed how we hire and retain talent."</p>
+                    <div class="mt-3 fw-bold">- HR Director, MedCare</div>
+                </div>
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"Seamless integration and incredible support team."</p>
+                    <div class="mt-3 fw-bold">- Ops Manager, RetailNet</div>
+                </div>
+                <!-- Duplicate for loop -->
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"The combination of expert advice and great software is unbeatable."</p>
+                    <div class="mt-3 fw-bold">- CEO, TechFlow</div>
+                </div>
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"We finally have visibility into our workforce costs."</p>
+                    <div class="mt-3 fw-bold">- CFO, LogiTrans</div>
+                </div>
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"NexHR transformed how we hire and retain talent."</p>
+                    <div class="mt-3 fw-bold">- HR Director, MedCare</div>
+                </div>
+                <div class="testimonial-bubble">
+                    <p class="fst-italic">"Seamless integration and incredible support team."</p>
+                    <div class="mt-3 fw-bold">- Ops Manager, RetailNet</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 12: Final CTA -->
+    <section id="contact" class="section-padding text-center position-relative overflow-hidden" style="background: var(--primary-teal); color: white;">
+        <div class="container position-relative z-2">
+            <h2 class="display-4 fw-bold mb-4">Need HR Expertise, Technology, or Both?</h2>
+            <p class="lead mb-5 opacity-75">Schedule a free consultation to see how we can transform your business.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <button class="btn btn-light fw-bold px-4 py-3 rounded-pill">Schedule Consultation</button>
+                <button class="btn btn-outline-light fw-bold px-4 py-3 rounded-pill">Request Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <h4 class="text-white mb-3">Nex<span class="text-teal">HR</span>.</h4>
+                    <p class="small">The premier partner for HR Consulting and HR Technology solutions. We bridge the gap between human strategy and digital execution.</p>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Company</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Press</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Services</h5>
+                    <a href="#" class="footer-link">Consulting</a>
+                    <a href="#" class="footer-link">Platform</a>
+                    <a href="#" class="footer-link">Payroll</a>
+                    <a href="#" class="footer-link">Recruitment</a>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Resources</h5>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Case Studies</a>
+                    <a href="#" class="footer-link">Whitepapers</a>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Connect</h5>
+                    <a href="#" class="footer-link">LinkedIn</a>
+                    <a href="#" class="footer-link">Twitter</a>
+                    <a href="#" class="footer-link">Facebook</a>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-4 text-center small">
+                <p>&copy; 2024 NexHR Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        // Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Register GSAP Plugins
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- Section 1: Hero Animation ---
+        const heroTl = gsap.timeline();
+        heroTl.from(".hero-text-content > *", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        })
+        .from(".hero-img", {
+            scale: 0.9,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out"
+        }, "-=0.8")
+        .from(".hero-card-anim", {
+            y: 50,
+            opacity: 0,
+            duration: 0.8
+        }, "-=0.5");
+
+        // --- Section 2: Challenges Reveal ---
+        gsap.utils.toArray('.gs-reveal').forEach((elem, i) => {
+            gsap.from(elem, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "top 90%"
+                },
+                y: 30,
+                opacity: 0,
+                duration: 0.6,
+                delay: i * 0.1
+            });
+        });
+
+        // --- Section 3: Consulting Cards ---
+        gsap.from(".service-card-consulting", {
+            scrollTrigger: {
+                trigger: "#consulting",
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1
+        });
+
+        // --- Section 4: Timeline Animation ---
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        timelineItems.forEach((item, index) => {
+            ScrollTrigger.create({
+                trigger: item,
+                start: "top 80%",
+                onEnter: () => {
+                    item.classList.add('active');
+                    // Update progress bar height
+                    const progress = ((index + 1) / timelineItems.length) * 100;
+                    gsap.to('.timeline-progress', { height: `${progress}%`, duration: 0.5 });
+                }
+            });
+        });
+
+        // --- Section 5: Platform Pinned Dashboard ---
+        // Pin the dashboard visual
+        ScrollTrigger.create({
+            trigger: ".dashboard-visual",
+            start: "top 15%",
+            endTrigger: "#platform",
+            end: "bottom bottom",
+            pin: true,
+            pinSpacing: false
+        });
+
+        // Animate feature badges as user scrolls through the text list
+        document.querySelectorAll('.feature-trigger').forEach((trigger) => {
+            const targetId = trigger.getAttribute('data-target');
+            const targetEl = document.getElementById(targetId);
+            
+            ScrollTrigger.create({
+                trigger: trigger,
+                start: "top 60%",
+                end: "bottom 60%",
+                onEnter: () => {
+                    gsap.to(targetEl, { opacity: 1, scale: 1, duration: 0.5 });
+                },
+                onLeave: () => {
+                    gsap.to(targetEl, { opacity: 0, scale: 0.8, duration: 0.3 });
+                },
+                onEnterBack: () => {
+                    gsap.to(targetEl, { opacity: 1, scale: 1, duration: 0.5 });
+                },
+                onLeaveBack: () => {
+                    gsap.to(targetEl, { opacity: 0, scale: 0.8, duration: 0.3 });
+                }
+            });
+        });
+
+        // --- Section 6: Split Layout Merge ---
+        const mergeTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#merge",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1
+            }
+        });
+
+        mergeTl.to(".split-left", { width: "0%", opacity: 0, padding: 0 }, "merge")
+               .to(".split-right", { width: "100%", duration: 1 }, "merge")
+               .to(".merge-icon-center", { opacity: 1, scale: 1.2, duration: 0.5 }, "merge+=0.5")
+               .to(".merge-result-text", { opacity: 1, y: -50, duration: 1 }, "merge+=0.5");
+
+        // --- Section 8: Metrics Counter ---
+        gsap.utils.toArray('.counter').forEach(counter => {
+            const target = counter.getAttribute('data-target');
+            gsap.to(counter, {
+                innerText: target,
+                duration: 2,
+                snap: { innerText: 1 },
+                scrollTrigger: {
+                    trigger: counter,
+                    start: "top 85%",
+                    once: true
+                }
+            });
+        });
+
+        // --- Section 10: Team Hover ---
+        // Handled via CSS mostly, but let's add a subtle GSAP entrance
+        gsap.from(".team-wrapper", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1
+        });
+
+        // --- Section 7: Industry Cards Tilt ---
+        document.querySelectorAll('.industry-card-trigger').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                gsap.to(card.querySelector('.hover-lift'), {
+                    rotationX: rotateX,
+                    rotationY: rotateY,
+                    transformPerspective: 1000,
+                    duration: 0.1
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card.querySelector('.hover-lift'), { rotationX: 0, rotationY: 0, duration: 0.5 });
+            });
+        });
+
+    </script>
+</body>
+</html>
