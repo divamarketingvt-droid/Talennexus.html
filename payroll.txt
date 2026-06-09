@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure and Automated Payroll Services for Enterprise.">
+    <title>Payroll Services | Automated & Compliant</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* USER REQUESTED COLOR PALETTE */
+            --primary-color: #4B857D;       /* Teal */
+            --primary-accent: #3cf680;      /* Neon Green */
+            --secondary-color: #2F3E52;     /* Dark Slate */
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-accent) 100%);
+            --gradient-text: linear-gradient(to right, #4B857D, #3cf680);
+            
+            /* Utils */
+            --text-dark: #1a1a1a;
+            --text-gray: #666666;
+            --bg-light: #f4f6f8;
+            --white: #FFFFFF;
+            
+            --shadow-lg: 0 20px 50px rgba(47, 62, 82, 0.15);
+            --shadow-glow: 0 10px 30px rgba(60, 246, 128, 0.25);
+            
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-color: #f9fafb;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ==================== NAVBAR ==================== */
+        .navbar-payroll {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            color: var(--secondary-color) !important;
+            font-size: 26px;
+        }
+
+        .navbar-brand span {
+            color: var(--primary-accent);
+        }
+
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 600;
+            padding: 10px 20px !important;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .btn-payroll {
+            background: var(--secondary-color);
+            color: var(--white) !important;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-payroll:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* ==================== HERO SECTION with SMOOTH LIQUID ANIMATION ==================== */
+        .payroll-hero {
+            /* 1. Define a diagonal gradient */
+            background: linear-gradient(120deg, #2F3E52 0%, #4B857D 50%, #2F3E52 100%);
+            /* 2. Make the background size 200% of the element */
+            background-size: 200% auto;
+            
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+            
+            /* 3. Apply the animation */
+            animation: liquidFlow 8s linear infinite;
+        }
+
+        /* The Animation Keyframes */
+        @keyframes liquidFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Floating Finance Particles */
+        .finance-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(60, 246, 128, 0.15);
+            filter: blur(50px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .fp1 { width: 300px; height: 300px; top: 20%; left: 10%; animation: bobbing 6s ease-in-out infinite; }
+        .fp2 { width: 400px; height: 400px; bottom: 10%; right: 5%; background: rgba(255, 255, 255, 0.1); animation: bobbing 7s ease-in-out infinite reverse; }
+
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+        }
+
+        .hero-badge {
+            background: rgba(60, 246, 128, 0.2);
+            color: var(--primary-accent);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(60, 246, 128, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .payroll-hero h1 {
+            font-size: 3.8rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .payroll-hero h1 span {
+            color: var(--primary-accent);
+        }
+
+        .payroll-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .hero-img-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Fake Payroll Dashboard UI */
+        .payroll-ui-header {
+            background: #f1f1f1;
+            padding: 15px 25px;
+            display: flex;
+            gap: 8px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .d-red { background: #ff5f56; }
+        .d-yellow { background: #ffbd2e; }
+        .d-green { background: var(--primary-accent); }
+
+        .payroll-ui-body {
+            padding: 30px;
+        }
+        
+        .pay-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .pay-row:last-child { border-bottom: none; }
+        .status-pill {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .status-paid { background: #e6fffa; color: var(--primary-color); }
+        .status-pending { background: #fffaf0; color: #ed8936; }
+
+        /* ==================== FEATURE CARDS ==================== */
+        .features-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 40px;
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(60, 246, 128, 0.3);
+        }
+
+        .f-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .f-icon {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        /* ==================== SAVINGS CALCULATOR UI (Visual) ==================== */
+        .calculator-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .calc-card {
+            background: var(--secondary-color);
+            border-radius: 30px;
+            padding: 60px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Glow behind Calculator */
+        .calc-glow {
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(60, 246, 128, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseGlow 5s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .calc-stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .calc-stat h4 {
+            font-size: 2.5rem;
+            color: var(--primary-accent);
+            margin-bottom: 0;
+        }
+
+        /* ==================== FOOTER WITH ANIMATION ==================== */
+        .footer-payroll {
+            background: var(--secondary-color);
+            color: rgba(255,255,255,0.7);
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary-accent);
+        }
+
+        /* The Animated Footer Glow */
+        .footer-glow-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(60, 246, 128, 0.1) 50%, 
+                transparent 100%);
+            background-size: 200% 100%;
+            animation: footerScan 6s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes footerScan {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(50%); }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1; /* Ensure text is above animation */
+        }
+
+        .footer-heading {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-link {
+            display: block;
+            margin-bottom: 12px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--primary-accent);
+            padding-left: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .payroll-hero { text-align: center; padding-top: 100px; min-height: auto; padding-bottom: 60px; }
+            .hero-img-card { margin-top: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-payroll">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                HRPro<span>Payroll</span>
+            </a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#payrollNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="payrollNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Compliance</a></li>
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-payroll" href="#contact">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Smooth Liquid Animation -->
+    <section class="payroll-hero">
+        <!-- Background Particles -->
+        <div class="finance-particle fp1"></div>
+        <div class="finance-particle fp2"></div>
+
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="hero-badge"><i class="bi bi-shield-lock me-2"></i>Bank-Grade Security</span>
+                    <h1>Payroll Made <span>Painless</span> & Precise</h1>
+                    <p>Automate calculations, ensure global compliance, and pay your employees on time, every time. Switch to the smartest payroll engine.</p>
+                    <div class="d-flex gap-3 flex-wrap justify-content-lg-start justify-content-center">
+                        <a href="#contact" class="btn btn-payroll btn-lg">Start Free Trial</a>
+                        <a href="#features" class="btn btn-outline-light rounded-pill px-4 py-3 fw-bold" style="border: 2px solid rgba(255,255,255,0.3); color:white;">View Features</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-img-card">
+                        <div class="payroll-ui-header">
+                            <span class="dot d-red"></span>
+                            <span class="dot d-yellow"></span>
+                            <span class="dot d-green"></span>
+                            <small class="text-muted ms-3">Payrun Summary - Oct 2024</small>
+                        </div>
+                        <div class="payroll-ui-body">
+                            <div class="pay-row">
+                                <div>
+                                    <strong style="color: var(--secondary-color);">John Doe</strong>
+                                    <div class="small text-muted">Software Engineer</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">$4,500.00</div>
+                                    <span class="status-pill status-paid">Paid</span>
+                                </div>
+                            </div>
+                            <div class="pay-row">
+                                <div>
+                                    <strong style="color: var(--secondary-color);">Sarah Smith</strong>
+                                    <div class="small text-muted">Product Manager</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">$5,200.00</div>
+                                    <span class="status-pill status-paid">Paid</span>
+                                </div>
+                            </div>
+                            <div class="pay-row">
+                                <div>
+                                    <strong style="color: var(--secondary-color);">Mike Johnson</strong>
+                                    <div class="small text-muted">Designer</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">$4,100.00</div>
+                                    <span class="status-pill status-pending">Processing</span>
+                                </div>
+                            </div>
+                            <div class="pay-row">
+                                <div>
+                                    <strong style="color: var(--secondary-color);">Emily Davis</strong>
+                                    <div class="small text-muted">HR Specialist</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">$3,800.00</div>
+                                    <span class="status-pill status-paid">Paid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="text-center mb-5" style="max-width: 700px; margin: 0 auto 60px;">
+                <h2 style="color: var(--secondary-color);">Why HRPro Payroll?</h2>
+                <div style="height: 4px; width: 60px; background: var(--gradient-primary); margin: 0 auto;"></div>
+                <p class="mt-4 text-muted">We handle the complex math and tax laws so you don't have to.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="bi bi-cpu"></i></div>
+                        <h4>Automated Calculations</h4>
+                        <p class="text-muted">Taxes, deductions, and benefits are calculated instantly. No more spreadsheets or manual errors.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="bi bi-globe"></i></div>
+                        <h4>Global Compliance</h4>
+                        <p class="text-muted">We stay up to date on tax laws in 140+ countries, ensuring your business is always compliant.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="bi bi-lightning-charge"></i></div>
+                        <h4>Instant Payouts</h4>
+                        <p class="text-muted">Integrate with major banking systems to pay employees in minutes, not days.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="bi bi-file-earmark-lock"></i></div>
+                        <h4>Secure Data</h4>
+                        <p class="text-muted">AES-256 encryption and SOC 2 Type II certification. Your employee data is safer than a bank vault.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h4>Self-Service Portal</h4>
+                        <p class="text-muted">Employees can access payslips, tax documents, and update details 24/7 via mobile or web.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="f-icon"><i class="bi bi-headset"></i></div>
+                        <h4>Dedicated Support</h4>
+                        <p class="text-muted">Real payroll experts, not bots, available to help you resolve complex issues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator / Savings Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calc-card">
+                <div class="calc-glow"></div>
+                <div class="row align-items-center position-relative z-2">
+                    <div class="col-lg-7 mb-4 mb-lg-0">
+                        <h2 class="mb-4">Save Time & Money</h2>
+                        <p class="text-white-50 mb-5">Switching to automated payroll saves the average HR team 15 hours per week and reduces compliance fines by 100%.</p>
+                        
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="calc-stat">
+                                    <h4>15h</h4>
+                                    <small>Saved / Week</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="calc-stat">
+                                    <h4>100%</h4>
+                                    <small>Accuracy Rate</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <form class="bg-white p-4 rounded-4 text-dark">
+                            <h4 class="mb-3" style="color: var(--secondary-color);">Get a Quote</h4>
+                            <div class="mb-3">
+                                <label class="small text-muted">Number of Employees</label>
+                                <input type="number" class="form-control" placeholder="e.g. 50">
+                            </div>
+                            <div class="mb-3">
+                                <label class="small text-muted">Frequency</label>
+                                <select class="form-select">
+                                    <option>Weekly</option>
+                                    <option>Bi-Weekly</option>
+                                    <option>Monthly</option>
+                                </select>
+                            </div>
+                            <button class="btn w-100 text-white fw-bold" style="background: var(--secondary-color); border-radius: 10px;">Calculate Savings</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER WITH SMOOTH ANIMATION -->
+    <footer class="footer-payroll">
+        <!-- The Animated Scan Line Background -->
+        <div class="footer-glow-bg"></div>
+        
+        <div class="container footer-content">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <h4 class="footer-heading mb-4">HRPro<span>Payroll</span></h4>
+                    <p>Modern payroll for modern companies. Trusted by over 2,500 businesses to pay their people accurately and on time.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="btn btn-outline-light rounded-circle"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6 mb-5">
+                    <h5 class="footer-heading">Product</h5>
+                    <a href="#" class="footer-link">Features</a>
+                    <a href="#" class="footer-link">Pricing</a>
+                    <a href="#" class="footer-link">Integrations</a>
+                    <a href="#" class="footer-link">API</a>
+                </div>
+                <div class="col-lg-2 col-6 mb-5">
+                    <h5 class="footer-heading">Company</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div class="col-lg-4 mb-5">
+                    <h5 class="footer-heading">Subscribe</h5>
+                    <p class="small">Get payroll tips and tax updates.</p>
+                    <form class="d-flex gap-2">
+                        <input type="email" class="form-control" placeholder="Email" style="background: rgba(255,255,255,0.1); border:none; color:white;">
+                        <button class="btn" style="background: var(--primary-accent); color: var(--secondary-color); font-weight:bold;">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row pt-4 border-top border-secondary border-opacity-25">
+                <div class="col-md-12 text-center small">
+                    &copy; 2024 HRPro Payroll Services. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
