@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elite Recruitment Services - Find your next top talent with HRPro.">
+    <title>Recruitment Services | Find Top Talent</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* USER REQUESTED COLOR PALETTE */
+            --primary-color: #4B857D;       /* Teal */
+            --primary-accent: #3cf680;      /* Neon Green */
+            --secondary-color: #2F3E52;     /* Dark Slate */
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-accent) 100%);
+            --gradient-text: linear-gradient(to right, #4B857D, #3cf680);
+            
+            /* Utils */
+            --text-dark: #1a1a1a;
+            --text-gray: #666666;
+            --bg-light: #f8f9fa;
+            --white: #FFFFFF;
+            
+            --shadow-lg: 0 20px 50px rgba(47, 62, 82, 0.15);
+            --shadow-glow: 0 10px 30px rgba(60, 246, 128, 0.25);
+            
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ==================== NAVBAR ==================== */
+        .navbar-recruitment {
+            background: rgba(47, 62, 82, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            color: var(--white) !important;
+            font-size: 26px;
+        }
+
+        .navbar-brand span {
+            color: var(--primary-accent);
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-accent) !important;
+        }
+
+        .btn-recruit {
+            background: var(--primary-accent);
+            color: var(--secondary-color) !important;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-recruit:hover {
+            background: var(--white);
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255,255,255,0.4);
+        }
+
+        /* ==================== HERO SECTION with SMOOTH COLOR ANIMATION ==================== */
+        .recruitment-hero {
+            /* The Animated Gradient Background */
+            background: linear-gradient(-45deg, #2F3E52, #3A5C58, #4B857D, #2F3E52);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        /* Smooth Color Shift Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Particles for depth */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(60, 246, 128, 0.1);
+            filter: blur(40px);
+            z-index: 1;
+        }
+
+        .p1 { width: 300px; height: 300px; top: 10%; left: 10%; animation: floatParticle 10s infinite alternate; }
+        .p2 { width: 400px; height: 400px; bottom: 10%; right: 10%; background: rgba(75, 133, 125, 0.15); animation: floatParticle 12s infinite alternate-reverse; }
+
+        @keyframes floatParticle {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--primary-accent);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(60, 246, 128, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .recruitment-hero h1 {
+            font-size: 4.2rem;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 25px;
+        }
+
+        .recruitment-hero h1 span {
+            color: var(--primary-accent);
+        }
+
+        .recruitment-hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 30px 30px 0 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        
+        .hero-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Match Card Animation */
+        .match-card {
+            position: absolute;
+            bottom: 20px;
+            left: -20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: popUp 3s ease-in-out infinite;
+            max-width: 280px;
+        }
+
+        @keyframes popUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .match-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* ==================== SPECIALTIES GRID ==================== */
+        .specialties-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .spec-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .spec-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .spec-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .spec-card:hover .spec-icon {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        /* ==================== CONNECTING PROCESS (Unique UI) ==================== */
+        .process-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+
+        .step-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        /* The connecting line */
+        .step-container::after {
+            content: '';
+            position: absolute;
+            top: 40px; /* Center with icon */
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #e0e0e0 0%, var(--primary-color) 50%, var(--primary-accent) 100%);
+            z-index: 0;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 4px solid var(--bg-light);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--primary-color);
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .step-item:hover .step-circle {
+            border-color: var(--primary-accent);
+            color: var(--white);
+            background: var(--gradient-primary);
+            transform: scale(1.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: 0; right: 0;
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(47, 62, 82, 0.05);
+            line-height: 1;
+        }
+
+        /* ==================== STATS / WHY US ==================== */
+        .stats-section {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background animated mesh for dark section */
+        .stats-mesh {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 20%, rgba(60, 246, 128, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(75, 133, 125, 0.1) 0%, transparent 50%);
+            animation: pulseMesh 10s infinite alternate;
+        }
+
+        @keyframes pulseMesh {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .stat-box {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            margin-bottom: 5px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-box p {
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        /* ==================== CTA FORM ==================== */
+        .cta-recruit {
+            padding: 100px 0;
+        }
+
+        .job-card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative circle behind form */
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 300px; height: 300px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.05;
+            filter: blur(40px);
+        }
+
+        .form-recruit input, .form-recruit select, .form-recruit textarea {
+            background: var(--bg-light);
+            border: none;
+            padding: 18px 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .form-recruit input:focus, .form-recruit select:focus, .form-recruit textarea:focus {
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(60, 246, 128, 0.2);
+            outline: none;
+        }
+
+        .btn-submit-recruit {
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .btn-submit-recruit:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .recruitment-hero { text-align: center; padding-top: 100px; }
+            .recruitment-hero h1 { font-size: 2.8rem; }
+            .hero-img-wrapper { margin-top: 60px; }
+            .match-card { left: 50%; transform: translateX(-50%); width: 90%; bottom: -40px; animation: none; }
+            
+            /* Process Step Responsive */
+            .step-container { flex-direction: column; gap: 40px; }
+            .step-container::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-recruitment">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                HRPro<span>Recruit</span>
+            </a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#recruitNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="recruitNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#">Industries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">For Candidates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">For Employers</a></li>
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-recruit" href="#contact">Post a Job</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Smooth Color Animation -->
+    <section class="recruitment-hero">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="hero-tag">Global Talent Network</span>
+                    <h1>Find the <span>Missing Piece</span> of Your Puzzle</h1>
+                    <p>We connect forward-thinking companies with exceptional talent. Our AI-driven matching ensures you find candidates who don't just have the skills, but fit the culture.</p>
+                    <div class="d-flex gap-3 flex-wrap justify-content-lg-start justify-content-center">
+                        <a href="#contact" class="btn btn-recruit btn-lg">Start Hiring</a>
+                        <a href="#process" class="btn btn-outline-light rounded-pill px-4 py-3 fw-bold" style="border: 2px solid rgba(255,255,255,0.3); color:white;">How It Works</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-img-wrapper">
+                        <img src="https://picsum.photos/seed/recruitment/800/700" alt="Recruitment Team" class="hero-img">
+                        <div class="match-card">
+                            <div class="match-icon">
+                                <i class="bi bi-person-check"></i>
+                            </div>
+                            <div>
+                                <strong style="display:block; font-size: 1.1rem; color: var(--secondary-color);">98% Match Found</strong>
+                                <small style="color: var(--text-gray);">Sr. Software Engineer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Grid -->
+    <section class="specialties-section">
+        <div class="container">
+            <div class="text-center mb-5" style="max-width: 700px; margin: 0 auto 60px;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 15px;">Industries We Master</h2>
+                <div style="height: 4px; width: 60px; background: var(--gradient-primary); margin: 0 auto;"></div>
+                <p class="mt-4 text-muted">Specialized recruiters with deep domain knowledge in high-growth sectors.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="spec-card">
+                        <div class="step-number">01</div>
+                        <div class="spec-icon"><i class="bi bi-cpu"></i></div>
+                        <h4>Technology & IT</h4>
+                        <p class="text-muted">Software engineers, DevOps, Data Scientists, and CTOs for tech giants and startups.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="spec-card">
+                        <div class="step-number">02</div>
+                        <div class="spec-icon"><i class="bi bi-bank"></i></div>
+                        <h4>Financial Services</h4>
+                        <p class="text-muted">Investment bankers, analysts, and compliance officers for FinTech and Banking.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="spec-card">
+                        <div class="step-number">03</div>
+                        <div class="spec-icon"><i class="bi bi-heart-pulse"></i></div>
+                        <h4>Healthcare & Bio</h4>
+                        <p class="text-muted">Doctors, researchers, and medical executives for hospitals and biotech firms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="spec-card">
+                        <div class="step-number">04</div>
+                        <div class="spec-icon"><i class="bi bi-laptop"></i></div>
+                        <h4>Marketing & Sales</h4>
+                        <p class="text-muted">Growth hackers, CMOs, and sales leaders ready to scale your revenue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connecting Process Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 style="color: var(--secondary-color);">Our Hiring Process</h2>
+                <p class="text-muted mt-3">Seamless from job description to day one.</p>
+            </div>
+
+            <div class="step-container">
+                <div class="step-item">
+                    <div class="step-circle">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <h4>1. Discovery</h4>
+                    <p class="small text-muted px-3">We analyze your needs, culture, and team dynamics to build the perfect persona.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-circle">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <h4>2. Sourcing</h4>
+                    <p class="small text-muted px-3">We hunt in hidden talent pools and use AI to surface passive candidates.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-circle">
+                        <i class="bi bi-chat-left-text"></i>
+                    </div>
+                    <h4>3. Vetting</h4>
+                    <p class="small text-muted px-3">Rigorous interviews and skill assessments ensure only the best reach you.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-circle">
+                        <i class="bi bi-handshake"></i>
+                    </div>
+                    <h4>4. Placement</h4>
+                    <p class="small text-muted px-3">We handle negotiations and onboarding to secure your new hire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-mesh"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat-box mb-4 mb-md-0">
+                        <h3>10k+</h3>
+                        <p>Candidates Placed</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-box mb-4 mb-md-0">
+                        <h3>14 Days</h3>
+                        <p>Avg. Time to Hire</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <h3>96%</h3>
+                        <p>Retention Rate (1yr)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Form -->
+    <section id="contact" class="cta-recruit">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="job-card">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 mb-5 mb-lg-0">
+                                <h2 style="color: var(--secondary-color); margin-bottom: 20px;">Ready to build your team?</h2>
+                                <p class="text-muted mb-4">Fill out the form below. One of our senior recruiters will review your requirements and get back to you within 24 hours.</p>
+                                
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                    <span class="fw-medium">Confidential Service</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                    <span class="fw-medium">Replacement Guarantee</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                    <span class="fw-medium">Dedicated Account Manager</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <form class="form-recruit">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" placeholder="Your Name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" placeholder="Work Email" required>
+                                        </div>
+                                    </div>
+                                    <input type="text" placeholder="Company Name">
+                                    <select>
+                                        <option>What type of role?</option>
+                                        <option>Engineering / Tech</option>
+                                        <option>Finance / Accounting</option>
+                                        <option>C-Suite / Executive</option>
+                                        <option>Sales / Marketing</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <textarea rows="4" placeholder="Describe the role requirements..."></textarea>
+                                    <button type="submit" class="btn-submit-recruit">Submit Requirement</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4" style="background: var(--secondary-color); color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+        <p>&copy; 2024 HRPro Recruitment. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Form Submit Handler
+        document.querySelector('.form-recruit').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            btn.innerHTML = 'Submitted Successfully! <i class="bi bi-check-circle-fill"></i>';
+            btn.style.opacity = '0.8';
+            
+            setTimeout(() => {
+                alert("Thank you! A recruiter will contact you shortly.");
+                this.reset();
+                btn.innerHTML = 'Submit Requirement';
+                btn.style.opacity = '1';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
