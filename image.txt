@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TalenNexus - Leading HR Consulting & SaaS Platform for Enterprise Organizations">
+    <meta name="keywords" content="HR Consulting, HR Software, Payroll, Recruitment, Compliance, HR SaaS">
+    <title>TalenNexus | Enterprise HR Consulting & SaaS Platform</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* ========================================= */
+            /* COLOR PALETTE */
+            /* ========================================= */
+            --primary-color: #4B857D;       /* Primary Teal */
+            --primary-accent: #3cf680;      /* Bright Neon Green Accent */
+            
+            /* Darker/Secondary tones */
+            --secondary-color: #2F3E52;     /* Dark Slate Blue */
+            --primary-hover: #3a6b64;      
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-accent) 100%);
+            
+            /* Derived Colors */
+            --primary-light: #e8f7f0;       
+            --primary-soft: #a8e5cf;       
+            
+            --text-dark: #1a1a1a;
+            --text-gray: #555555;
+            --bg-light: #f8f9fa;
+            --white: #FFFFFF;
+            
+            /* Shadows */
+            --shadow-sm: 0 4px 15px rgba(47, 62, 82, 0.08);
+            --shadow-md: 0 8px 25px rgba(47, 62, 82, 0.12);
+            --shadow-lg: 0 15px 40px rgba(47, 62, 82, 0.2);
+            --glow-primary: 0 0 20px rgba(60, 246, 128, 0.4);
+
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        /* ==================== NAVIGATION & LOGO ==================== */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-brand {
+            padding: 0;
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-color) !important;
+        }
+
+        /* --- UPDATED LOGO STYLES --- */
+        .logo-img {
+            height: 50px; 
+            width: auto;
+            /* Increased max-width to accommodate the wider "TalenNexus" text */
+            max-width: 240px; 
+            object-fit: contain;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled .logo-img {
+            height: 40px;
+            /* Scaled down proportionally */
+            max-width: 200px; 
+        }
+
+        @media (max-width: 991px) {
+            .logo-img {
+                height: 40px;
+                max-width: 180px;
+            }
+        }
+        /* ---------------------------- */
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--secondary-color) !important;
+            padding: 10px 18px !important;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .dropdown-item:hover {
+            background: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-primary);
+            color: var(--white) !important;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(75, 133, 125, 0.3);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-primary);
+        }
+
+        .btn-primary-custom:hover::before {
+            opacity: 1;
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--primary-color) !important;
+            border: 2px solid var(--primary-color);
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: var(--white) !important;
+            box-shadow: var(--glow-primary);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero-section {
+            background: linear-gradient(160deg, #f4fdf8 0%, #f0fdf4 40%, #e8f7f0 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(60, 246, 128, 0.15) 0%, transparent 60%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(75, 133, 125, 0.15) 0%, transparent 60%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease 0.3s both;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            padding: 20px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            animation: float 3s ease-in-out infinite;
+            border-left: 4px solid var(--primary-accent);
+        }
+
+        .floating-card.card-1 {
+            top: 20px;
+            left: -40px;
+            animation-delay: 0s;
+        }
+
+        .floating-card.card-2 {
+            bottom: 60px;
+            right: -30px;
+            animation-delay: 1s;
+            border-left-color: var(--primary-color);
+        }
+
+        .floating-card i {
+            font-size: 24px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-right: 10px;
+        }
+
+        .floating-card strong {
+            color: var(--secondary-color);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--white);
+            padding: 40px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border-bottom: 4px solid var(--primary-accent);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        /* ==================== SERVICES SECTION ==================== */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--gradient-primary);
+        }
+
+        .service-icon i {
+            font-size: 36px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon i {
+            color: var(--white);
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .service-card a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .service-card a:hover {
+            color: var(--primary-accent);
+            gap: 12px;
+        }
+
+        /* ==================== SAAS PLATFORM SECTION ==================== */
+        .platform-section {
+            background: var(--secondary-color);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .platform-section h2 {
+            color: var(--white);
+        }
+
+        .platform-feature {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+
+        .platform-feature:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(10px);
+            border-color: var(--primary-accent);
+            box-shadow: -5px 0 15px rgba(60, 246, 128, 0.2);
+        }
+
+        .platform-feature i {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary-soft); 
+        }
+
+        .platform-feature h5 {
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .platform-feature p {
+            color: rgba(255,255,255,0.8);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .platform-dashboard {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dashboard-header {
+            background: var(--secondary-color); 
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dashboard-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: var(--primary-accent); }
+
+        .dashboard-content {
+            padding: 30px;
+        }
+
+        .mock-chart {
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-bar {
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 10px;
+        }
+
+        .bar {
+            width: 35px;
+            background: var(--gradient-primary);
+            border-radius: 5px 5px 0 0;
+            animation: growBar 1.5s ease forwards;
+            position: relative;
+        }
+
+        .bar::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: #fff;
+            opacity: 0.5;
+            border-radius: 5px 5px 0 0;
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
+        /* ==================== INDUSTRIES SECTION ==================== */
+        .industry-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .industry-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 25px rgba(60, 246, 128, 0.25);
+            transform: translateY(-8px);
+        }
+
+        .industry-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .industry-card:hover .industry-icon {
+            background: var(--gradient-primary);
+            transform: scale(1.1);
+        }
+
+        .industry-icon i {
+            font-size: 38px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .industry-card:hover .industry-icon i {
+            color: var(--white);
+        }
+
+        .industry-card h5 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .industry-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* ==================== MARQUEE CLIENT SECTION ==================== */
+        .client-marquee-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .client-marquee-section::before,
+        .client-marquee-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .client-marquee-section::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-light), transparent);
+        }
+
+        .client-marquee-section::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-light), transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 50s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .client-feedback-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 0 20px;
+            width: 380px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid var(--primary-color); 
+            transition: var(--transition);
+        }
+
+        .client-feedback-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-left-color: var(--primary-accent);
+        }
+
+        .client-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .client-info h6 {
+            font-size: 1.1rem;
+            margin: 0;
+            color: var(--secondary-color);
+        }
+
+        .client-stars {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .client-quote {
+            color: var(--text-gray);
+            font-size: 1rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* ==================== CASE STUDIES ==================== */
+        .case-study-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .case-study-img {
+            height: 220px;
+            background: var(--gradient-primary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-study-img i {
+            font-size: 64px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .case-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--white);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .case-study-body {
+            padding: 30px;
+        }
+
+        .case-study-body h4 {
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+        }
+
+        .case-study-body p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .case-metrics {
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .metric-item strong {
+            display: block;
+            font-size: 1.3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-item small {
+            color: var(--text-gray);
+        }
+
+        /* ==================== FAQ SECTION ==================== */
+        .faq-section {
+            background: var(--bg-light);
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius) !important;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .accordion-button {
+            background: var(--white);
+            font-weight: 600;
+            color: var(--secondary-color);
+            padding: 20px 25px;
+            font-size: 1.05rem;
+            box-shadow: none;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234B857D'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-body {
+            padding: 20px 25px;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* ==================== BLOG SECTION ==================== */
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-img {
+            height: 200px;
+            background: var(--gradient-primary);
+            position: relative;
+        }
+
+        .blog-date {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            background: var(--white);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .blog-body {
+            padding: 25px;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .blog-body h5 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .blog-body h5 a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .blog-body h5 a:hover {
+            color: var(--primary-color);
+        }
+
+        .blog-body p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .author-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 35px;
+            height: 35px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* ==================== CONTACT / CTA SECTION ==================== */
+        .cta-section {
+            background: var(--gradient-primary);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 45px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .form-control,
+        .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(75, 133, 125, 0.1);
+        }
+
+        .btn-submit {
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(60, 246, 128, 0.4);
+        }
+
+        .contact-info-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-icon {
+            width: 65px;
+            height: 65px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .contact-icon i {
+            font-size: 26px;
+            color: var(--primary-color);
+        }
+
+        .contact-info-card h6 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .contact-info-card p {
+            color: var(--text-gray);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--secondary-color);
+            color: rgba(255,255,255,0.8);
+            padding: 80px 0 30px;
+        }
+
+        .footer-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand i {
+            font-size: 28px;
+            color: var(--primary-accent);
+        }
+
+        .footer-desc {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer h5 {
+            color: var(--white);
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .footer-contact i {
+            color: var(--primary-accent);
+            margin-top: 4px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .newsletter-form button {
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-bottom a {
+            color: var(--primary-accent);
+            text-decoration: none;
+        }
+
+        /* ==================== TOAST NOTIFICATION ==================== */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+        }
+        
+        .custom-toast {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border-bottom: 3px solid var(--primary-accent);
+        }
+        
+        .custom-toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .custom-toast i {
+            color: var(--primary-accent);
+            font-size: 1.2rem;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow-primary);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .stats-bar { margin-top: 0; }
+            .stat-item { border-right: none; border-bottom: 1px solid #e0e0e0; }
+            .floating-card { display: none; }
+            .navbar-brand { margin-right: 0; }
+        }
+
+        @media (max-width: 767px) {
+            .hero-section { padding: 100px 0 80px; }
+            .hero-content h1 { font-size: 2rem; }
+            .section-title h2 { font-size: 2rem; }
+            .contact-form { padding: 30px 20px; }
+            
+            .client-feedback-card {
+                width: 300px;
+                padding: 20px;
+                margin: 0 10px;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <!-- UPDATED LOGO SRC -->
+                <img src="https://z-cdn-media.chatglm.cn/files/b0d3657b-8380-4a98-9b35-d5d4b48d9d46.png?auth_key=1881076109-526e04fd46e14ce5a46affdb0b5194d9-0-3aba7c5c4c2a83ce99d030161936ddb2" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNTAiIGZpbGw9Im5vbmUiPjx0ZXh0IHg9IjEwIiB5PSIzNSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNEI4NTdEIj5UYWxlbk5leHVzPC90ZXh0Pjwvc3ZnPg=='" 
+                     alt="TalenNexus" class="logo-img">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">HR Consulting</a></li>
+                            <li><a class="dropdown-item" href="#">Recruitment</a></li>
+                            <li><a class="dropdown-item" href="#">Payroll Services</a></li>
+                            <li><a class="dropdown-item" href="#">Compliance</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#platform">HR SaaS Platform</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#industries">Industries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#case-studies">Case Studies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#careers">Careers</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary-custom" href="#contact">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1>Transform Your <span>Workforce Strategy</span> With TalenNexus</h1>
+                        <p>Empowering enterprises with cutting-edge HR consulting services and intelligent SaaS platforms. Streamline operations, enhance compliance, and unlock your team's full potential.</p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary-custom btn-lg me-3">
+                                <i class="bi bi-rocket-takeoff me-2"></i>Schedule Demo
+                            </a>
+                            <a href="#platform" class="btn btn-outline-custom btn-lg">
+                                <i class="bi bi-play-circle me-2"></i>Watch Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <img src="https://picsum.photos/seed/hrtech/800/600" alt="HR Technology Dashboard">
+                        <div class="floating-card card-1">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            <strong>+47%</strong> Efficiency Gain
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="bi bi-shield-check"></i>
+                            <strong>99.9%</strong> Uptime SLA
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" data-count="2500">0</div>
+                    <div class="stat-label">Enterprise Clients</div>
+                </div>
+                
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">% Client Retention</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-label">HR Experts</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" data-count="35">0</div>
+                    <div class="stat-label">Countries Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Comprehensive HR Services</h2>
+                <p>End-to-end human resources solutions designed to drive organizational excellence and employee engagement across every touchpoint.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <h4>HR Consulting</h4>
+                        <p>Strategic HR advisory services to align your people strategy with business objectives and drive sustainable growth.</p>
+                        <a href="#consulting">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+                        <h4>Recruitment Services</h4>
+                        <p>End-to-end talent acquisition solutions including executive search, volume hiring, and employer branding.</p>
+                        <a href="#recruitment">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <h4>Payroll Services</h4>
+                        <p>Accurate, compliant, and timely payroll processing with multi-country capabilities and tax management.</p>
+                        <a href="#payroll">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4>Compliance Services</h4>
+                        <p>Navigate complex labor laws and regulations with expert guidance on workplace compliance and risk mitigation.</p>
+                        <a href="#compliance">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                        <h4>Organization Design</h4>
+                        <p>Optimize your organizational structure, roles, and reporting lines for maximum efficiency and agility.</p>
+                        <a href="#">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-mortarboard"></i>
+                        </div>
+                        <h4>L&D Programs</h4>
+                        <p>Customized learning and development initiatives to upskill your workforce and build future-ready leaders.</p>
+                        <a href="#">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HR SaaS Platform Section -->
+    <section id="platform" class="platform-section section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="animate-on-scroll">
+                        <h2 style="color: white; margin-bottom: 20px;">Intelligent HR SaaS Platform</h2>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 35px;">
+                            Our cloud-based HR platform unifies all your workforce processes into one powerful ecosystem. From recruitment to retirement, manage everything seamlessly.
+                        </p>
+                        
+                        <div class="platform-feature">
+                            <i class="bi bi-people"></i>
+                            <h5>Employee Lifecycle Management</h5>
+                            <p>Complete employee journey tracking from onboarding to offboarding with automated workflows.</p>
+                        </div>
+                        <div class="platform-feature">
+                            <i class="bi bi-pie-chart"></i>
+                            <h5>Advanced Analytics & Reporting</h5>
+                            <p>Real-time dashboards and predictive insights to make data-driven HR decisions.</p>
+                        </div>
+                        <div class="platform-feature">
+                            <i class="bi bi-gear-wide-connected"></i>
+                            <h5>Seamless Integrations</h5>
+                            <p>Connect with 200+ tools including Slack, Teams, SAP, Workday, and more via API.</p>
+                        </div>
+                        <div class="platform-feature">
+                            <i class="bi bi-lock"></i>
+                            <h5>Enterprise Security</h5>
+                            <p>SOC 2 Type II certified with end-to-end encryption and GDPR compliance built-in.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="platform-dashboard animate-on-scroll">
+                        <div class="dashboard-header">
+                            <span class="dashboard-dot dot-red"></span>
+                            <span class="dashboard-dot dot-yellow"></span>
+                            <span class="dashboard-dot dot-green"></span>
+                            <small style="color: rgba(255,255,255,0.7); margin-left: 10px;">TalenNexus Dashboard</small>
+                        </div>
+                        <div class="dashboard-content">
+                            <div class="mock-chart">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <strong style="font-size: 0.9rem; color: var(--secondary-color);">Workforce Analytics</strong>
+                                    <small style="color: var(--text-gray);">2024 Overview</small>
+                                </div>
+                                <div class="chart-bar">
+                                    <div class="bar" style="height: 60%;"></div>
+                                    <div class="bar" style="height: 80%;"></div>
+                                    <div class="bar" style="height: 45%;"></div>
+                                    <div class="bar" style="height: 90%;"></div>
+                                    <div class="bar" style="height: 70%;"></div>
+                                    <div class="bar" style="height: 95%;"></div>
+                                    <div class="bar" style="height: 75%;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <small style="color: var(--text-gray); font-size: 0.75rem;">Jan</small>
+                                    <small style="color: var(--text-gray); font-size: 0.75rem;">Feb</small>
+                                    <small style="color: var(--text-gray); font-size: 0.75rem;">Mar</small>
+                                    <small style="color: var(--text-gray); font-size: 0.75rem;">Apr</small>
+                                    <small style="color: var(--text-gray); font-size: 0.75rem;">May</small>
+                                    <small style="color: var(--text-gray); font-size: 0.75rem;">Jun</small>
+                                    <small style="color: var(--text-gray); font-size: 0.75rem;">Jul</small>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div style="background: var(--primary-light); padding: 15px; border-radius: 10px; text-align: center;">
+                                        <strong style="color: var(--primary-color); font-size: 1.5rem;">12,450</strong><br>
+                                        <small style="color: var(--text-gray);">Total Employees</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div style="background: #e8fdf4; padding: 15px; border-radius: 10px; text-align: center;">
+                                        <strong style="color: var(--primary-accent); font-size: 1.5rem;">94%</strong><br>
+                                        <small style="color: var(--text-gray);">Engagement Score</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="section-padding" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Industries We Serve</h2>
+                <p>Tailored HR solutions that address the unique challenges and requirements of diverse industry verticals.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h5>Financial Services</h5>
+                        <p>Banks, Insurance, FinTech</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <h5>Healthcare</h5>
+                        <p>Hospitals, Pharma, Biotech</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h5>Technology</h5>
+                        <p>Software, IT Services, AI</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-shop"></i>
+                        </div>
+                        <h5>Retail & E-commerce</h5>
+                        <p>Consumer Goods, Logistics</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-factory"></i>
+                        </div>
+                        <h5>Manufacturing</h5>
+                        <p>Automotive, Aerospace, Energy</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <h5>Education</h5>
+                        <p>Universities, EdTech, Training</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h5>Transportation</h5>
+                        <p>Logistics, Aviation, Shipping</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 animate-on-scroll">
+                    <div class="industry-card">
+                        <div class="industry-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h5>Professional Services</h5>
+                        <p>Consulting, Legal, Accounting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT MARQUEE SECTION -->
+    <section class="client-marquee-section">
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <!-- First Set of Cards -->
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #FFF4E6; color: #FF9900;">H+</div>
+                        <div class="client-info">
+                            <h6>HealthPlus</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"TalenNexus helped us navigate complex healthcare compliance seamlessly."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #E8F5E9; color: #2E7D32;">RG</div>
+                        <div class="client-info">
+                            <h6>RetailGiant</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Payroll is finally easy. We saved 20 hours a week on administrative tasks."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #E3F2FD; color: #1565C0;">EW</div>
+                        <div class="client-info">
+                            <h6>EduWorld</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Highly recommend the team. Their recruitment strategy filled our faculty roles in record time."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #F3E5F5; color: #7B1FA2;">LT</div>
+                        <div class="client-info">
+                            <h6>LogiTrans</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Efficiency increased by 40%. The workforce analytics dashboard is a game changer."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #FFEBEE; color: #C62828;">TC</div>
+                        <div class="client-info">
+                            <h6>TechCorp</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Best HR software we've used. The integration with our existing stack was flawless."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #E0F7FA; color: #00838F;">CS</div>
+                        <div class="client-info">
+                            <h6>Consulting Services</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Strategic insights that transformed our organizational structure for the better."</p>
+                </div>
+
+                <!-- Duplicate Set for Infinite Scroll Loop -->
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #FFF4E6; color: #FF9900;">H+</div>
+                        <div class="client-info">
+                            <h6>HealthPlus</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"TalenNexus helped us navigate complex healthcare compliance seamlessly."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #E8F5E9; color: #2E7D32;">RG</div>
+                        <div class="client-info">
+                            <h6>RetailGiant</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Payroll is finally easy. We saved 20 hours a week on administrative tasks."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #E3F2FD; color: #1565C0;">EW</div>
+                        <div class="client-info">
+                            <h6>EduWorld</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Highly recommend the team. Their recruitment strategy filled our faculty roles in record time."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #F3E5F5; color: #7B1FA2;">LT</div>
+                        <div class="client-info">
+                            <h6>LogiTrans</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Efficiency increased by 40%. The workforce analytics dashboard is a game changer."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #FFEBEE; color: #C62828;">TC</div>
+                        <div class="client-info">
+                            <h6>TechCorp</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Best HR software we've used. The integration with our existing stack was flawless."</p>
+                </div>
+
+                <div class="client-feedback-card">
+                    <div class="client-header">
+                        <div class="company-logo" style="background: #E0F7FA; color: #00838F;">CS</div>
+                        <div class="client-info">
+                            <h6>Consulting Services</h6>
+                            <div class="client-stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="client-quote">"Strategic insights that transformed our organizational structure for the better."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="section-padding">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Success Stories & Case Studies</h2>
+                <p>Discover how leading organizations have transformed their HR operations with our solutions.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="case-study-card">
+                        <div class="case-study-img">
+                            <i class="bi bi-bank"></i>
+                            <span class="case-category">Financial Services</span>
+                        </div>
+                        <div class="case-study-body">
+                            <h4>Global Bank HR Transformation</h4>
+                            <p>How we helped a Fortune 500 bank streamline HR operations across 45 countries while ensuring regulatory compliance.</p>
+                            <div class="case-metrics">
+                                <div class="metric-item">
+                                    <strong>60%</strong>
+                                    <small>Cost Reduction</small>
+                                </div>
+                                <div class="metric-item">
+                                    <strong>40%</strong>
+                                    <small>Faster Hiring</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="case-study-card">
+                        <div class="case-study-img">
+                            <i class="bi bi-hospital"></i>
+                            <span class="case-category">Healthcare</span>
+                        </div>
+                        <div class="case-study-body">
+                            <h4>Healthcare System Optimization</h4>
+                            <p>Implemented unified HR platform for a major healthcare network serving 50,000+ employees nationwide.</p>
+                            <div class="case-metrics">
+                                <div class="metric-item">
+                                    <strong>85%</strong>
+                                    <small>Process Automation</small>
+                                </div>
+                                <div class="metric-item">
+                                    <strong>$2.5M</strong>
+                                    <small>Annual Savings</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="case-study-card">
+                        <div class="case-study-img">
+                            <i class="bi bi-cart3"></i>
+                            <span class="case-category">Retail</span>
+                        </div>
+                        <div class="case-study-body">
+                            <h4>Retail Giant Workforce Scaling</h4>
+                            <p>Enabled rapid seasonal scaling of 15,000+ workers with automated onboarding and compliance tracking.</p>
+                            <div class="case-metrics">
+                                <div class="metric-item">
+                                    <strong>3 Days</strong>
+                                    <small>Onboarding Time</small>
+                                </div>
+                                <div class="metric-item">
+                                    <strong>99.5%</strong>
+                                    <small>Compliance Rate</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title animate-on-scroll">
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Find answers to common questions about our HR consulting and SaaS platform services.</p>
+                    </div>
+                    <div class="accordion animate-on-scroll" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What makes TalenNexus different from other HR software providers?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    TalenNexus combines world-class HR consulting expertise with an enterprise-grade SaaS platform. Unlike pure software vendors, we bring decades of hands-on HR experience to help you not just implement technology, but transform your entire people strategy. Our solution includes dedicated success managers, ongoing advisory support, and continuous platform innovation.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    How long does it take to implement the TalenNexus platform?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Implementation timelines vary based on organization size and complexity. For mid-sized companies (500-2000 employees), typical implementation takes 8-12 weeks. For large enterprises (5000+ employees), we recommend 16-24 weeks for full deployment including data migration, integrations, and change management support.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Is my data secure on the TalenNexus platform?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Absolutely. Security is our top priority. We are SOC 2 Type II certified, GDPR compliant, and maintain ISO 27001 certification. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). We conduct regular penetration testing, maintain strict access controls, and offer optional on-premise deployment for highly regulated industries.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 mb-5 mb-lg-0">
+                            <div class="cta-content animate-on-scroll">
+                                <h2>Ready to Transform Your HR Operations?</h2>
+                                <p>Schedule a personalized demo with our experts and discover how TalenNexus can address your unique organizational needs.</p>
+                                
+                                <div class="row g-3 mt-4">
+                                    <div class="col-12">
+                                        <div class="contact-info-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                                            <div class="contact-icon" style="background: rgba(255,255,255,0.15);">
+                                                <i class="bi bi-phone"></i>
+                                            </div>
+                                            <h6 style="color: white;">Call Us</h6>
+                                            <p style="color: rgba(255,255,255,0.8);">+1 (800) 555-NEXUS</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="contact-info-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                                            <div class="contact-icon" style="background: rgba(255,255,255,0.15);">
+                                                <i class="bi bi-envelope"></i>
+                                            </div>
+                                            <h6 style="color: white;">Email Us</h6>
+                                            <p style="color: rgba(255,255,255,0.8);">contact@talennexus.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="contact-form animate-on-scroll">
+                                <h3 style="margin-bottom: 25px; color: var(--secondary-color);">Request a Free Consultation</h3>
+                                <form id="contactForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" required placeholder="John">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" required placeholder="Smith">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Work Email *</label>
+                                            <input type="email" class="form-control" required placeholder="john@company.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Company Name *</label>
+                                            <input type="text" class="form-control" required placeholder="Your Company">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Service Interest</label>
+                                            <select class="form-select">
+                                                <option>Select service</option>
+                                                <option>HR Consulting</option>
+                                                <option>Recruitment Services</option>
+                                                <option>Payroll Services</option>
+                                                <option>Compliance Services</option>
+                                                <option>HR SaaS Platform</option>
+                                                <option>Multiple Services</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Message</label>
+                                            <textarea class="form-control" rows="4" placeholder="Tell us about your HR needs..."></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-submit">
+                                                <i class="bi bi-send me-2"></i>Send Request
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand">
+                        <i class="bi bi-building"></i> TalenNexus
+                    </div>
+                    <p class="footer-desc">
+                        Empowering organizations worldwide with innovative HR consulting services and enterprise-grade technology solutions. Building better workplaces since 2010.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#consulting"><i class="bi bi-chevron-right"></i> HR Consulting</a></li>
+                        <li><a href="#recruitment"><i class="bi bi-chevron-right"></i> Recruitment</a></li>
+                        <li><a href="#payroll"><i class="bi bi-chevron-right"></i> Payroll</a></li>
+                        <li><a href="#compliance"><i class="bi bi-chevron-right"></i> Compliance</a></li>
+                        <li><a href="#platform"><i class="bi bi-chevron-right"></i> HR SaaS</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="bi bi-chevron-right"></i> About Us</a></li>
+                        <li><a href="#careers"><i class="bi bi-chevron-right"></i> Careers</a></li>
+                        <li><a href="#case-studies"><i class="bi bi-chevron-right"></i> Case Studies</a></li>
+                        <li><a href="#blog"><i class="bi bi-chevron-right"></i> Blog</a></li>
+                        <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 15px;">Get the latest HR insights delivered to your inbox weekly.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 TalenNexus. All Rights Reserved. | 
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container">
+        <div id="customToast" class="custom-toast">
+            <i class="bi bi-check-circle-fill"></i>
+            <span id="toastMessage">Success!</span>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Sticky Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to Top Click Handler
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+                
+                const navCollapse = document.querySelector('.navbar-collapse.show');
+                if (navCollapse) {
+                    new bootstrap.Collapse(navCollapse).hide();
+                }
+            });
+        });
+
+        // Toast Notification Function
+        function showToast(message) {
+            const toast = document.getElementById('customToast');
+            const toastMsg = document.getElementById('toastMessage');
+            
+            toastMsg.innerText = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Counter Animation for Stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString() + (target === 98 ? '%' : '+');
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    
+                    if (entry.target.closest('.stats-bar')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Also observe stats bar
+        const statsBar = document.querySelector('.stats-bar');
+        if (statsBar) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statsObserver.observe(statsBar);
+        }
+
+        // Form Submission Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('.btn-submit');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Message Sent!';
+                showToast("Your request has been sent successfully!");
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Newsletter Form Handler
+        document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast("Thank you for subscribing!");
+            this.reset();
+        });
+
+        // Active Nav Link Highlighting on Scroll
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
